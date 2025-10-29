@@ -1,12 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Example of Structural Class UML diagram
+// Example of Structural Class UML diagram - is-a relation
 class Car{
-    private:
-        string model;
-        string brand;
-        int engineCC;
+    // private:
+    //     string model;
+    //     string brand;
+    //     int engineCC;
     
     public:
         void startEngine()
@@ -17,47 +17,43 @@ class Car{
 
 class manualCar : public Car{
 public:
-    void gearShift()
-    {
+    void gearShift(){
         cout << "Gear shifted!" << endl;
     };
 };
 
-// Example of Structural Class UML diagram
+// Example of Structural Class UML diagram  - has-a relation
 
 class Room{
-
     public:
-
     void canSleep(){
         cout << "We can Sleep inside" << endl;
     }
 };
 
 class Sofa{
-
+    public:
     Room *livingRoom;
-
     Sofa(){
-        livingRoom = new Room;
+        livingRoom = new Room();
     }
-
     void canRest(){
         cout << "Resting" << endl;
     }
 };
 
 int main(){
-    manualCar *Tesla = new manualCar();
 
+    // Structural Class UML diagram - is - a relation
+    manualCar *Tesla = new manualCar();
     Tesla->startEngine();
     Tesla->gearShift();
 
-    Sofa *chair = new Sofa;
+    // Structural Class UML diagram - has - a relation 
+    Sofa *chair = new Sofa();
+    chair->canRest();
+    chair->livingRoom->canSleep();
 
-    
-
-    delete Tesla;
-    return 0;
+  
 }
 
